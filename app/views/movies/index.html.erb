@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 offset-sm-2">
+      <%= form_tag movies_path, method: :get do %>
+        <%= text_field_tag :query, params[:query],   class: "form-control", placeholder: "Find a movie" %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
+      <% @movies.each do |movie| %>
+        <h2><%= movie.title %></h2>
+        <small><%= movie.director.full_name %></small>
+        <p><%= movie.syllabus %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
