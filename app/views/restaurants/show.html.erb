@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 offset-sm-3">
+      <h1><%= @restaurant.name %> <small><%= @restaurant.address %></small></h1>
+      <h2>
+        <%= pluralize @restaurant.reviews.size, "review" %>
+      </h2>
+      <%= render 'reviews/form', restaurant: @restaurant, review: @review %>
+      <% if @restaurant.reviews.blank? %>
+        <h3>Be the first to leave a review for <%= @restaurant.name %></h3>
+      <% else %>
+        <div id="reviews">
+          <% @restaurant.reviews.each do |review| %>
+            <%= render 'reviews/show', review: review %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
